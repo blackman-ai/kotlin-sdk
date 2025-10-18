@@ -83,6 +83,11 @@ publishing {
                 username = System.getenv("MAVEN_CENTRAL_USERNAME") ?: ""
                 password = System.getenv("MAVEN_CENTRAL_PASSWORD") ?: ""
             }
+
+            // Debug output
+            val hasUsername = !System.getenv("MAVEN_CENTRAL_USERNAME").isNullOrBlank()
+            val hasPassword = !System.getenv("MAVEN_CENTRAL_PASSWORD").isNullOrBlank()
+            println("🔑 Maven credentials configured: username=$hasUsername, password=$hasPassword")
         }
     }
 
@@ -91,8 +96,17 @@ publishing {
 signing {
     val signingKey = System.getenv("GPG_PRIVATE_KEY")
     val signingPassword = System.getenv("GPG_PASSPHRASE")
-    if (signingKey != null && signingPassword != null) {
+    if (!signingKey.isNullOrBlank() && !signingPassword.isNullOrBlank()) {
         useInMemoryPgpKeys(signingKey, signingPassword)
         sign(publishing.publications["maven"])
+    } else {
+        println("⚠️  WARNING: GPG signing not configured - missing GPG_PRIVATE_KEY or GPG_PASSPHRASE")
+    }
+}
+
+tasks.withType<PublishToMavenRepository> {
+    doFirst {
+        println("📤 Publishing to repository: \${repository.name}")
+        println("📤 Repository URL: \${repository.url}")
     }
 }
