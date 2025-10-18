@@ -74,4 +74,27 @@ publishing {
             }
         }
     }
+
+    repositories {
+        maven {
+            name = "central"
+            url = uri("https://central.sonatype.com/api/v1/publisher")
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
+}
+
+signing {
+    useInMemoryPgpKeys(
+        System.getenv("GPG_PRIVATE_KEY"),
+        System.getenv("GPG_PASSPHRASE")
+    )
+    sign(publishing.publications["maven"])
+}
+
+tasks.withType<Sign>().configureEach {
+    onlyIf { System.getenv("GPG_PRIVATE_KEY") != null }
 }
