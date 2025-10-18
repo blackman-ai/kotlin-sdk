@@ -4,7 +4,6 @@ plugins {
     kotlin("jvm") version "1.9.20"
     `maven-publish`
     signing
-    id("org.sonatype.central.portal-publisher") version "1.1.0"
 }
 
 group = "ai.useblackman"
@@ -76,12 +75,17 @@ publishing {
         }
     }
 
-}
+    repositories {
+        maven {
+            name = "ossrh"
+            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+            credentials {
+                username = System.getenv("MAVEN_CENTRAL_USERNAME") ?: ""
+                password = System.getenv("MAVEN_CENTRAL_PASSWORD") ?: ""
+            }
+        }
+    }
 
-centralPortal {
-    username = System.getenv("MAVEN_CENTRAL_USERNAME") ?: ""
-    password = System.getenv("MAVEN_CENTRAL_PASSWORD") ?: ""
-    publishingType = "USER_MANAGED"
 }
 
 signing {
