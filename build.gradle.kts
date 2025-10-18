@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm") version "1.9.20"
     `maven-publish`
     signing
+    id("org.sonatype.central.portal-publisher") version "1.1.0"
 }
 
 group = "ai.useblackman"
@@ -75,16 +76,12 @@ publishing {
         }
     }
 
-    repositories {
-        maven {
-            name = "sonatype"
-            url = uri("https://central.sonatype.com/api/v1/publisher/upload?name=ai.useblackman:client-kotlin:$version&publishingType=USER_MANAGED")
-            credentials {
-                username = System.getenv("MAVEN_CENTRAL_USERNAME") ?: ""
-                password = System.getenv("MAVEN_CENTRAL_PASSWORD") ?: ""
-            }
-        }
-    }
+}
+
+centralPortal {
+    username = System.getenv("MAVEN_CENTRAL_USERNAME") ?: ""
+    password = System.getenv("MAVEN_CENTRAL_PASSWORD") ?: ""
+    publishingType = "USER_MANAGED"
 }
 
 signing {
