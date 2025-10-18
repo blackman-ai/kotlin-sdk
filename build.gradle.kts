@@ -77,24 +77,21 @@ publishing {
 
     repositories {
         maven {
-            name = "central"
-            url = uri("https://central.sonatype.com/api/v1/publisher")
+            name = "sonatype"
+            url = uri("https://central.sonatype.com/api/v1/publisher/upload?name=ai.useblackman:client-kotlin:$version&publishingType=USER_MANAGED")
             credentials {
-                username = System.getenv("MAVEN_USERNAME")
-                password = System.getenv("MAVEN_PASSWORD")
+                username = System.getenv("MAVEN_CENTRAL_USERNAME") ?: ""
+                password = System.getenv("MAVEN_CENTRAL_PASSWORD") ?: ""
             }
         }
     }
 }
 
 signing {
-    useInMemoryPgpKeys(
-        System.getenv("GPG_PRIVATE_KEY"),
-        System.getenv("GPG_PASSPHRASE")
-    )
-    sign(publishing.publications["maven"])
-}
-
-tasks.withType<Sign>().configureEach {
-    onlyIf { System.getenv("GPG_PRIVATE_KEY") != null }
+    val signingKey = System.getenv("GPG_PRIVATE_KEY")
+    val signingPassword = System.getenv("GPG_PASSPHRASE")
+    if (signingKey != null && signingPassword != null) {
+        useInMemoryPgpKeys(signingKey, signingPassword)
+        sign(publishing.publications["maven"])
+    }
 }
