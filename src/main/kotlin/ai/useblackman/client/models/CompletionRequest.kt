@@ -32,6 +32,7 @@ import com.squareup.moshi.JsonClass
  * @param stream 
  * @param temperature 
  * @param topP 
+ * @param metadata Optional metadata for tracking, analytics, and conditional processing. Can include session IDs, user context, feature flags, or any custom data. This metadata is logged with the request and can be used for filtering/analysis.
  */
 
 
@@ -59,7 +60,11 @@ data class CompletionRequest (
     val temperature: kotlin.Float? = null,
 
     @Json(name = "top_p")
-    val topP: kotlin.Float? = null
+    val topP: kotlin.Float? = null,
+
+    /* Optional metadata for tracking, analytics, and conditional processing. Can include session IDs, user context, feature flags, or any custom data. This metadata is logged with the request and can be used for filtering/analysis. */
+    @Json(name = "metadata")
+    val metadata: kotlin.Any? = null
 
 ) {
 

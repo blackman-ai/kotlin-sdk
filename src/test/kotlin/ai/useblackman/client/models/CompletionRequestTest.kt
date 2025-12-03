@@ -75,5 +75,11 @@ class CompletionRequestTest : ShouldSpec() {
             //modelInstance.topP shouldBe ("TODO")
         }
 
+        // to test the property `metadata` - Optional metadata for tracking, analytics, and conditional processing. Can include session IDs, user context, feature flags, or any custom data. This metadata is logged with the request and can be used for filtering/analysis.
+        should("test metadata") {
+            // uncomment below to test the property
+            //modelInstance.metadata shouldBe ("TODO")
+        }
+
     }
 }
