@@ -19,7 +19,7 @@ Official Kotlin client for [Blackman AI](https://www.useblackman.ai) - The AI AP
 
 ```kotlin
 dependencies {
-    implementation("ai.useblackman:client-kotlin:0.0.5")
+    implementation("ai.useblackman:client-kotlin:0.0.10")
 }
 ```
 
@@ -27,7 +27,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'ai.useblackman:client-kotlin:0.0.5'
+    implementation 'ai.useblackman:client-kotlin:0.0.10'
 }
 ```
 
@@ -37,7 +37,7 @@ dependencies {
 <dependency>
     <groupId>ai.useblackman</groupId>
     <artifactId>client-kotlin</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.10</version>
 </dependency>
 ```
 

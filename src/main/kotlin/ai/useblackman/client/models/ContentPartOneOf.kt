@@ -15,7 +15,6 @@
 
 package ai.useblackman.client.models
 
-import ai.useblackman.client.models.MessageContent
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,22 +22,30 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param content 
- * @param role \"user\", \"assistant\", \"system\"
+ * @param text 
+ * @param type 
  */
 
 
-data class Message (
+data class ContentPartOneOf (
 
-    @Json(name = "content")
-    val content: MessageContent,
+    @Json(name = "text")
+    val text: kotlin.String,
 
-    /* \"user\", \"assistant\", \"system\" */
-    @Json(name = "role")
-    val role: kotlin.String
+    @Json(name = "type")
+    val type: ContentPartOneOf.Type
 
 ) {
 
+    /**
+     * 
+     *
+     * Values: text
+     */
+    @JsonClass(generateAdapter = false)
+    enum class Type(val value: kotlin.String) {
+        @Json(name = "text") text("text");
+    }
 
 }
 

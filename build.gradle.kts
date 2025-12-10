@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "ai.useblackman"
-version = "0.0.5"
+version = "0.0.10"
 
 repositories {
     mavenCentral()

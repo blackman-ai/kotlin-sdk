@@ -15,27 +15,18 @@
 
 package ai.useblackman.client.models
 
-import ai.useblackman.client.models.MessageContent
+import ai.useblackman.client.models.ContentPart
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * Message content can be either a simple string or an array of content parts (for vision)
  *
- * @param content 
- * @param role \"user\", \"assistant\", \"system\"
  */
 
 
-data class Message (
-
-    @Json(name = "content")
-    val content: MessageContent,
-
-    /* \"user\", \"assistant\", \"system\" */
-    @Json(name = "role")
-    val role: kotlin.String
+class MessageContent (
 
 ) {
 

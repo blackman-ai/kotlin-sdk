@@ -18,24 +18,23 @@ package ai.useblackman.client.models
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
-import ai.useblackman.client.models.Message
-import ai.useblackman.client.models.MessageContent
+import ai.useblackman.client.models.ContentPartOneOf
 
-class MessageTest : ShouldSpec() {
+class ContentPartOneOfTest : ShouldSpec() {
     init {
-        // uncomment below to create an instance of Message
-        //val modelInstance = Message()
+        // uncomment below to create an instance of ContentPartOneOf
+        //val modelInstance = ContentPartOneOf()
 
-        // to test the property `content`
-        should("test content") {
+        // to test the property `text`
+        should("test text") {
             // uncomment below to test the property
-            //modelInstance.content shouldBe ("TODO")
+            //modelInstance.text shouldBe ("TODO")
         }
 
-        // to test the property `role` - \"user\", \"assistant\", \"system\"
-        should("test role") {
+        // to test the property `type`
+        should("test type") {
             // uncomment below to test the property
-            //modelInstance.role shouldBe ("TODO")
+            //modelInstance.type shouldBe ("TODO")
         }
 
     }

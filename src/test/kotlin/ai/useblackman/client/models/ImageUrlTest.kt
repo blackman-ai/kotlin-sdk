@@ -18,24 +18,23 @@ package ai.useblackman.client.models
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
-import ai.useblackman.client.models.Message
-import ai.useblackman.client.models.MessageContent
+import ai.useblackman.client.models.ImageUrl
 
-class MessageTest : ShouldSpec() {
+class ImageUrlTest : ShouldSpec() {
     init {
-        // uncomment below to create an instance of Message
-        //val modelInstance = Message()
+        // uncomment below to create an instance of ImageUrl
+        //val modelInstance = ImageUrl()
 
-        // to test the property `content`
-        should("test content") {
+        // to test the property `url`
+        should("test url") {
             // uncomment below to test the property
-            //modelInstance.content shouldBe ("TODO")
+            //modelInstance.url shouldBe ("TODO")
         }
 
-        // to test the property `role` - \"user\", \"assistant\", \"system\"
-        should("test role") {
+        // to test the property `detail` - Optional detail level: \"auto\", \"low\", or \"high\"
+        should("test detail") {
             // uncomment below to test the property
-            //modelInstance.role shouldBe ("TODO")
+            //modelInstance.detail shouldBe ("TODO")
         }
 
     }

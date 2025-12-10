@@ -15,7 +15,6 @@
 
 package ai.useblackman.client.models
 
-import ai.useblackman.client.models.MessageContent
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,19 +22,19 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param content 
- * @param role \"user\", \"assistant\", \"system\"
+ * @param url 
+ * @param detail Optional detail level: \"auto\", \"low\", or \"high\"
  */
 
 
-data class Message (
+data class ImageUrl (
 
-    @Json(name = "content")
-    val content: MessageContent,
+    @Json(name = "url")
+    val url: kotlin.String,
 
-    /* \"user\", \"assistant\", \"system\" */
-    @Json(name = "role")
-    val role: kotlin.String
+    /* Optional detail level: \"auto\", \"low\", or \"high\" */
+    @Json(name = "detail")
+    val detail: kotlin.String? = null
 
 ) {
 
